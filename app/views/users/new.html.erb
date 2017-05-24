@@ -1,8 +1,6 @@
-<% if @errors %>
-	<% @errors.each do |error| %>
-		<%= error %>
-	<% end %>
-<% end %>
+
+
+<%= render partial: './errors', locals: {errors: @errors} %>
 
 <%= form_for :user, url: '/users' do |f| %>
 	<%= f.label :username %>
