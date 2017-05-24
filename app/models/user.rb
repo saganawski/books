@@ -3,6 +3,6 @@ class User < ApplicationRecord
 
 	has_many :votes
 
-	validates :username, :email, presence: true
-	validates :username, :email, presence: true
+	validates :username, :email, :password, presence: true
+	validates :username, :email, uniqueness: true
 end
