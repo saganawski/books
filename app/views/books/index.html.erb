@@ -1,1 +1,7 @@
 <h1>books go here!</h1>
+<ul>
+	<% @books.each do |book| %>
+		<li><%= book.title %> By: <%= book.author %> Rank: <%= book.rank %></li>
+	<% end %>
+	
+</ul>
