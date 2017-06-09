@@ -3,5 +3,5 @@ class Book < ApplicationRecord
 	has_many :links
 
 	validates :title, :author, presence: true
-	validates :title, :author, uniqueness: true
+	validates :title, uniqueness: true
 end
