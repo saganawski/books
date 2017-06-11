@@ -6,4 +6,10 @@ class VotesController < ApplicationController
 
 		redirect_to book_path(@book)
 	end
+
+	def destroy
+		vote = Vote.find(params[:id]).destroy
+
+		redirect_to book_path(params[:book_id])
+	end	
 end

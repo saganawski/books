@@ -5,4 +5,11 @@ module VotesHelper
   	end
   	return true
   end
+
+  def return_user_vote_id(book_id)
+  	user = User.find(session[:user_id])
+  	vote = user.votes.where(["book_id = ?", book_id])
+  	vote[0].id
+ 
+  end
 end
