@@ -13,12 +13,18 @@
 		<% end %>
 	<% end %>
 <% end %>
-
+<h2>User Upvote Count : <%= @book.votes.count %></h2>
 <h2>Add Comment</h2>
 
 <% if !logged_in? %>
 	<h2>Log in to add comment</h2>
 <% else %>
+	<!-- TODO Partial out forms -->
+	<% if user_can_vote? %>
+		<%= form_for ([@book, @book.votes.build]) do |f| %>
+			<p> <%= f.submit %></p>
+		<% end %>
+	<% end %>
 	<%= form_for ([@book, @book.comments.build]) do |f| %>
 		<p>
 			<%= f.label :text %><br>

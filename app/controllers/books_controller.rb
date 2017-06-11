@@ -7,8 +7,7 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		
 		links = @book.links
-		@link = links[0].link.html_safe
-		
+		@link = links[0].link.html_safe	
 	end
 
 
