@@ -7,6 +7,10 @@
 	<% @book.comments.each do |comment| %>
 		<p>Username: <strong><%= comment.commenter.username %></strong></p>
 		<p><%= comment.text %></p>
+
+		<% if authorized?(comment.commenter_id) %>
+			<%= link_to 'Remove Comment', [comment.book, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %>
+		<% end %>
 	<% end %>
 <% end %>
 
@@ -25,3 +29,4 @@
 		</p>
 	<% end %>
 <% end %>
+

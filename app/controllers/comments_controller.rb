@@ -11,7 +11,11 @@ class CommentsController < ApplicationController
 			@errors = ["Comments Cant be blank"]
 			redirect_to book_path(@book)
 		end
+	end
 
+	def destroy
+		@comment = Comment.find(params[:id]).destroy
+		redirect_to book_path(@comment.book)
 	end
 
 	private
