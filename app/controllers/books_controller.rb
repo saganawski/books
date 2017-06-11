@@ -8,7 +8,6 @@ class BooksController < ApplicationController
 		
 		links = @book.links
 		@link = links[0].link.html_safe
-
 		
 	end
 
