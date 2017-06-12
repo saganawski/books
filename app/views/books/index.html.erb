@@ -1,7 +1,11 @@
 <h1>The Greates Books of all Space and Time!</h1>
-<ul>
-	<% @books.each do |book| %>
-		<li> <%= link_to book.title, book_path(book) %> By: <%= book.author %> Rank: <%= book.rank %></li>
-	<% end %>
+<div class='row'>
 	
-</ul>
+	<% @books.each do |book| %>
+		<div class="col s6 offset-s1">
+			<%= link_to book.title, book_path(book) %> By: <%= book.author %> Rank: <%= book.rank %>
+		</div>	
+			
+	<% end %>
+</div>
+	

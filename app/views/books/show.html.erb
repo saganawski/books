@@ -1,19 +1,20 @@
 <h1><%= @book.title %></h1>
-<h3>Support this page by clicking on the picture and purchasing anything from amazon</h3>
+<h4>Support this page by clicking on the picture and purchasing anything from amazon</h4>
+<div class='row'>
+	<div class='col 1 offset-s2'><%= @link %></div>
+</div>
 
-<%= @link %>
+<div class='row'>
+	<div class='col 1'><%= render @book.comments %></div>
+</div>
+	<h5> Upvote Count : <%= @book.votes.count %></h5>
+	<h2>Add Comment</h2>
 
-<%= render @book.comments %>
+	<% if !logged_in? %>
+		<h2>Log in to add comment or Upvote</h2>
+	<% else %>
+		<%= render 'votes/vote' %>
 
-<h2>User Upvote Count : <%= @book.votes.count %></h2>
-<h2>Add Comment</h2>
-
-<% if !logged_in? %>
-	<h2>Log in to add comment or Upvote</h2>
-<% else %>
-	<%= render 'votes/vote' %>
-
-	<%= render 'comments/form' %>
-
-<% end %>
+		<%= render 'comments/form' %>
+	<% end %>
 
