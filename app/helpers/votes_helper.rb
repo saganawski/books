@@ -1,6 +1,7 @@
 module VotesHelper
-  def user_can_vote?
-  	Vote.all.each do |vote|
+  def user_can_vote?(book_id)
+    book = Book.find(book_id)
+  	book.votes.each do |vote|
   		return false if vote.user_id == session[:user_id]
   	end
   	return true
