@@ -9,15 +9,21 @@
   </head>
 
   <body>
-  	<nav>
-  		<%= link_to "Home", root_path %>
-  		<% if logged_in? %>
-  			<%= link_to "Log Out", session_path(current_user), method: :delete %>
-  		<% else %>
-	  		<%= link_to "Register", new_user_path %>
-	  		<%= link_to "Log In", new_session_path %>
-  		<% end %>
-  	</nav>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to "Home", root_path %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if logged_in? %>
+        <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
+      <% else %>
+
+      <% end %>
+        <li><%= link_to "Register", new_user_path %></li>
+        <li><%= link_to "Log In", new_session_path%></li>
+      </ul>
+    </div>
+  </nav>
+
     <%= yield %>
   </body>
 </html>

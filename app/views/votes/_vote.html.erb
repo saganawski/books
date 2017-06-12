@@ -1,4 +1,4 @@
-	<% if user_can_vote? %>
+	<% if user_can_vote?(@book.id) %>
 		<%= form_for ([@book, @book.votes.build]) do |f| %>
 			<p> <%= f.submit %></p>
 		<% end %>
