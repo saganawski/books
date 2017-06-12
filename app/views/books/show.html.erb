@@ -3,38 +3,17 @@
 
 <%= @link %>
 
-<% if @book.comments %>
-	<% @book.comments.each do |comment| %>
-		<p>Username: <strong><%= comment.commenter.username %></strong></p>
-		<p><%= comment.text %></p>
+<%= render @book.comments %>
 
-		<% if authorized?(comment.commenter_id) %>
-			<%= link_to 'Remove Comment', [comment.book, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %>
-		<% end %>
-	<% end %>
-<% end %>
 <h2>User Upvote Count : <%= @book.votes.count %></h2>
 <h2>Add Comment</h2>
 
 <% if !logged_in? %>
-	<h2>Log in to add comment</h2>
+	<h2>Log in to add comment or Upvote</h2>
 <% else %>
-	<!-- TODO Partial out forms -->
-	<% if user_can_vote? %>
-		<%= form_for ([@book, @book.votes.build]) do |f| %>
-			<p> <%= f.submit %></p>
-		<% end %>
-	<% else %>
-		<%= link_to 'Remove vote', book_vote_path(@book,return_user_vote_id(@book)), method: :delete %>
-	<% end %>
-	<%= form_for ([@book, @book.comments.build]) do |f| %>
-		<p>
-			<%= f.label :text %><br>
-			<%= f.text_area :text %>
-		</p>
-		<p>
-			<%= f.submit %>
-		</p>
-	<% end %>
+	<%= render 'votes/vote' %>
+
+	<%= render 'comments/form' %>
+
 <% end %>
 

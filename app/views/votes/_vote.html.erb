@@ -1,0 +1,7 @@
+	<% if user_can_vote? %>
+		<%= form_for ([@book, @book.votes.build]) do |f| %>
+			<p> <%= f.submit %></p>
+		<% end %>
+	<% else %>
+		<%= link_to 'Remove vote', book_vote_path(@book,return_user_vote_id(@book)), method: :delete %>
+	<% end %>
