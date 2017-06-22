@@ -5,7 +5,7 @@
 </div>
 
 <div class='row'>
-	<div class='col 3 offset-s4'><%= render @book.comments %></div>
+	<div class='col 3 offset-s4'><%= render 'comments/comment' %></div>
 </div>
 <div class='row'>
 	<div class='col 3 offset-s4'><h5> Upvote Count : <%= @book.votes.count %></h5></div>
